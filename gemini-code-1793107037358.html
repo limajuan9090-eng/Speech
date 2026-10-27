@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repositorio de Speeches - Soporte Técnico</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html, body {
+            background-color: #0f172a;
+            color: #f1f5f9;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen p-4 md:p-6">
+    <!-- Header -->
+    <header class="bg-slate-800 border border-slate-700 rounded-2xl p-4 mb-6 shadow-md">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl text-white shadow-lg shadow-blue-500/30">
+                    <i class="fa-solid fa-headset text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold tracking-tight">Soporte Técnico ISP</h1>
+                    <p class="text-xs text-slate-400">Repositorio Oficial de Speeches y Guías de Atención</p>
+                </div>
+            </div>
+            <!-- Buscador Rápido -->
+            <div class="w-full md:w-96 relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+                <input type="text" id="searchInput" placeholder="Escribe cualquier palabra para buscar..." 
+                    class="w-full pl-10 pr-4 py-2 bg-slate-900 border border-slate-700 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm transition shadow-inner">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto pb-8">
+        <!-- Notification Toast -->
+        <div id="toast" class="fixed bottom-6 right-6 bg-emerald-600 text-white px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3 transform translate-y-24 opacity-0 transition-all duration-300 z-50">
+            <i class="fa-solid fa-circle-check text-lg"></i>
+            <div>
+                <p class="font-semibold text-sm">¡Texto copiado!</p>
+                <p class="text-xs text-emerald-100">Listo para pegar en el chat o ticket.</p>
+            </div>
+        </div>
+
+        <!-- Grid de Secciones -->
+        <div id="contentGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- 1. Transferir a Redes -->
+            <div class="speech-card bg-slate-800 border border-slate-700 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-600 transition shadow-lg">
+                <div class="speech-item">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/20">Redes</span>
+                        <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 font-medium">
+                            <i class="fa-regular fa-copy"></i> Copiar
+                        </button>
+                    </div>
+                    <h3 class="font-bold text-base mb-2 text-white">Transferir al equipo de redes</h3>
+                    <p class="speech-text text-sm text-slate-300 bg-slate-900/60 p-3.5 rounded-xl border border-slate-700/50 whitespace-pre-line leading-relaxed">Tu requerimiento ha sido remitido al Departamento de Redes para realizar una evaluación técnica especializada de tu caso.
+Tan pronto como el equipo de ingeniería realice los chequeos y ajustes pertinentes, nos comunicaremos contigo. ¡Estamos trabajando para ofrecerte la mejor experiencia!</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-700/60 text-[11px] text-slate-400 flex items-center justify-between">
+                    <span>Escalar caso</span>
+                    <i class="fa-solid fa-network-wired"></i>
+                </div>
+            </div>
+
+            <!-- 2. Lentitud -->
+            <div class="speech-card bg-slate-800 border border-slate-700 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-600 transition shadow-lg">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-amber-500/10 text-amber-400 rounded-full border border-amber-500/20">Diagnóstico / Chat</span>
+                        <span class="text-xs text-slate-400">Preguntas individuales</span>
+                    </div>
+                    <h3 class="font-bold text-base mb-3 text-white">Lentitud (Preguntas de Chat)</h3>
+                    <div class="space-y-3">
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50 flex items-start justify-between gap-2">
+                            <p class="speech-text text-sm text-slate-300 leading-snug">¿Puede indicarme los dispositivos con los cuales presenta lentitud?</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-2.5 py-1 rounded-lg transition shrink-0">
+                                <i class="fa-regular fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50 flex items-start justify-between gap-2">
+                            <p class="speech-text text-sm text-slate-300 leading-snug">¿El inconveniente que nos indica es con la red 2.4Ghz o la red 5Ghz?</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-2.5 py-1 rounded-lg transition shrink-0">
+                                <i class="fa-regular fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50 flex items-start justify-between gap-2">
+                            <p class="speech-text text-sm text-slate-300 leading-snug">¿Puede enviarme una imagen de las redes wifi que le aparecen en su celular, por favor?</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-2.5 py-1 rounded-lg transition shrink-0">
+                                <i class="fa-regular fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-700/60 text-[11px] text-slate-400 flex items-center justify-between">
+                    <span>Filtrado inicial</span>
+                    <i class="fa-solid fa-gauge-high"></i>
+                </div>
+            </div>
+
+            <!-- 3. Prueba de Velocidad -->
+            <div class="speech-card bg-slate-800 border border-slate-700 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-600 transition shadow-lg">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">Prueba</span>
+                        <span class="text-xs text-slate-400">Instrucciones & Renuencia</span>
+                    </div>
+                    <h3 class="font-bold text-base mb-3 text-white">Prueba de Velocidad</h3>
+                    <div class="space-y-3">
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50">
+                            <p class="speech-text text-sm text-slate-300 leading-relaxed whitespace-pre-line mb-2.5">Para medir tu velocidad de forma óptima, por favor realiza los siguientes pasos:
+• Conéctate a la red Wi-Fi 5 GHz de tu router.
+• Sitúate a un par de metros del equipo, sin paredes ni obstáculos de por medio.
+• Ingresa en tu navegador a https://www.speedtest.net/es/ O https://www.nperf.com/es/ y presiona INICIAR
+
+Ten en cuenta que la prueba de velocidad realizada directamente por cable de red (LAN) es la que refleja la totalidad y máxima capacidad contratada de tu servicio.
+Envíanos la captura de pantalla con el resultado para corroborar los parámetros de plan. ¡Estamos a la orden!</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-3 py-1.5 rounded-lg transition w-full flex items-center justify-center gap-1.5 font-medium">
+                                <i class="fa-regular fa-copy"></i> Copiar Bloque de Prueba
+                            </button>
+                        </div>
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50">
+                            <p class="speech-text text-sm text-slate-300 leading-relaxed mb-2.5">Le indico que en este caso necesitamos que se realice la prueba correspondiente debido a que esta validación nos ayuda a procesar su caso de una mejor manera.</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-3 py-1.5 rounded-lg transition w-full flex items-center justify-center gap-1.5 font-medium">
+                                <i class="fa-regular fa-copy"></i> Copiar Respuesta a Renuencia
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-700/60 text-[11px] text-slate-400 flex items-center justify-between">
+                    <span>Speedtest / nPerf</span>
+                    <i class="fa-solid fa-stopwatch"></i>
+                </div>
+            </div>
+
+            <!-- 4. Diferencias 2.4 y 5 GHz -->
+            <div class="speech-card bg-slate-800 border border-slate-700 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-600 transition shadow-lg">
+                <div class="speech-item">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-purple-500/10 text-purple-400 rounded-full border border-purple-500/20">Wi-Fi</span>
+                        <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 font-medium">
+                            <i class="fa-regular fa-copy"></i> Copiar
+                        </button>
+                    </div>
+                    <h3 class="font-bold text-base mb-2 text-white">Diferencias de 2.4 GHz y 5 GHz</h3>
+                    <p class="speech-text text-sm text-slate-300 bg-slate-900/60 p-3.5 rounded-xl border border-slate-700/50 whitespace-pre-line leading-relaxed">Te explicamos brevemente la diferencia entre las redes de tu router:
+• Red 2.4 GHz: Diseñada para tener mayor alcance y cobertura (atraviesa paredes), aunque con velocidad moderada.
+• Red 5 GHz: Diseñada para entregarte la máxima velocidad e internet ultrarrápido, ideal cuando estás en la misma habitación o cerca del equipo.
+Recomendación: Conecta tus Smart TV y consolas a la red 5 GHz para el máximo rendimiento (Esto en caso de tener más de dos rayas del señal en el TV).</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-700/60 text-[11px] text-slate-400 flex items-center justify-between">
+                    <span>Explicación Wi-Fi</span>
+                    <i class="fa-solid fa-wifi"></i>
+                </div>
+            </div>
+
+            <!-- 5. Recomendación Router Personal -->
+            <div class="speech-card bg-slate-800 border border-slate-700 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-600 transition shadow-lg">
+                <div class="speech-item">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/20">Ventas / Equipos</span>
+                        <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 font-medium">
+                            <i class="fa-regular fa-copy"></i> Copiar
+                        </button>
+                    </div>
+                    <h3 class="font-bold text-base mb-2 text-white">Recomendación de Router Personal</h3>
+                    <p class="speech-text text-sm text-slate-300 bg-slate-900/60 p-3.5 rounded-xl border border-slate-700/50 whitespace-pre-line leading-relaxed">Para optimizar la cobertura y velocidad en tu hogar u oficina, te recomendamos el uso de un Router Doble Banda (2.4 GHz y 5 GHz)
+Este tipo de equipo permite conectar tus dispositivos a la red adecuada según la distancia, garantizando máxima estabilidad y aprovechamiento completo de tu plan. Además, al ser tu equipo personal, podrás gestionar por tu cuenta y cuando desees tus cambios de clave y visualizar los dispositivos conectados
+¡Escríbenos si deseas conocer los modelos que tenemos disponibles para ti!</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-700/60 text-[11px] text-slate-400 flex items-center justify-between">
+                    <span>Upselling Doble Banda</span>
+                    <i class="fa-solid fa-router"></i>
+                </div>
+            </div>
+
+            <!-- 6. Lentitud con Router Personal -->
+            <div class="speech-card bg-slate-800 border border-slate-700 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-600 transition shadow-lg">
+                <div class="speech-item">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-amber-500/10 text-amber-400 rounded-full border border-amber-500/20">Router Tercero</span>
+                        <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 font-medium">
+                            <i class="fa-regular fa-copy"></i> Copiar
+                        </button>
+                    </div>
+                    <h3 class="font-bold text-base mb-2 text-white">Lentitud con un Equipo Personal</h3>
+                    <p class="speech-text text-sm text-slate-300 bg-slate-900/60 p-3.5 rounded-xl border border-slate-700/50 whitespace-pre-line leading-relaxed">Estimado/a cliente, le informamos que la falla reportada proviene de su router personal conectado a nuestro equipo ONU
+Al tratarse de un equipo propio y ajeno a nuestra empresa, no podemos realizar configuraciones o ajustes remotos en él.
+Le sugerimos reiniciar su router personal o revisar sus ajustes de red. Quedamos a su disposición para cualquier consulta sobre nuestro servicio</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-700/60 text-[11px] text-slate-400 flex items-center justify-between">
+                    <span>Deslinde de responsabilidad</span>
+                    <i class="fa-solid fa-ban"></i>
+                </div>
+            </div>
+
+            <!-- 7. Xuper TV -->
+            <div class="speech-card bg-slate-800 border border-slate-700 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-600 transition shadow-lg">
+                <div class="speech-item">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-purple-500/10 text-purple-400 rounded-full border border-purple-500/20">Streaming</span>
+                        <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 font-medium">
+                            <i class="fa-regular fa-copy"></i> Copiar
+                        </button>
+                    </div>
+                    <h3 class="font-bold text-base mb-2 text-white">Xuper TV</h3>
+                    <p class="speech-text text-sm text-slate-300 bg-slate-900/60 p-3.5 rounded-xl border border-slate-700/50 whitespace-pre-line leading-relaxed">Te comentamos que al hacer uso de aplicaciones o plataformas no oficiales, los servidores de origen suelen ser inestables o no verídicos. Por esta razón, no es posible validar si el inconveniente se debe al servicio de internet o a la propia aplicación.
+Te recomendamos probar el funcionamiento de tu servicio mediante plataformas oficiales como YouTube. ¡Agradecemos tu comprensión!</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-700/60 text-[11px] text-slate-400 flex items-center justify-between">
+                    <span>Apps piratas / IPTV</span>
+                    <i class="fa-solid fa-tv"></i>
+                </div>
+            </div>
+
+            <!-- 8. Casos de LOS -->
+            <div class="speech-card bg-slate-800 border border-slate-700 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-600 transition shadow-lg">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-red-500/10 text-red-400 rounded-full border border-red-500/20">Falla Óptica / Chat</span>
+                        <span class="text-xs text-slate-400">Preguntas individuales</span>
+                    </div>
+                    <h3 class="font-bold text-base mb-3 text-white">Casos de LOS</h3>
+                    <div class="space-y-3">
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50 flex items-start justify-between gap-2">
+                            <p class="speech-text text-sm text-slate-300 leading-snug">¿Puede enviarme una foto o video corto, claro y de frente de la ONU/Router donde se observen los indicadores LED?</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-2.5 py-1 rounded-lg transition shrink-0">
+                                <i class="fa-regular fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50 flex items-start justify-between gap-2">
+                            <p class="speech-text text-sm text-slate-300 leading-snug">¿Puede indicarme si observa algún detalle físico dentro del domicilio o si manipulo el equipo?</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-2.5 py-1 rounded-lg transition shrink-0">
+                                <i class="fa-regular fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50 flex items-start justify-between gap-2">
+                            <p class="speech-text text-sm text-slate-300 leading-snug">¿Puede comprobar que el patchcord amarillo (cable de fibra) esté firmemente conectado a la ONU y sin dobleces marcados ni quiebres?</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-2.5 py-1 rounded-lg transition shrink-0">
+                                <i class="fa-regular fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50 flex items-start justify-between gap-2">
+                            <p class="speech-text text-sm text-slate-300 leading-snug">¿Puede desconectar el equipo de la corriente durante 5min y luego volver a conectar, por favor?. Y una vez el equipo encienda me envía otra foto o video de que luces encendieron.</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-2.5 py-1 rounded-lg transition shrink-0">
+                                <i class="fa-regular fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-700/60 text-[11px] text-slate-400 flex items-center justify-between">
+                    <span>Protocolo luz roja</span>
+                    <i class="fa-solid fa-lightbulb"></i>
+                </div>
+            </div>
+
+            <!-- 9. Intermitencia -->
+            <div class="speech-card bg-slate-800 border border-slate-700 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-600 transition shadow-lg">
+                <div class="speech-item">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-amber-500/10 text-amber-400 rounded-full border border-amber-500/20">Intermitencia</span>
+                        <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 font-medium">
+                            <i class="fa-regular fa-copy"></i> Copiar
+                        </button>
+                    </div>
+                    <h3 class="font-bold text-base mb-2 text-white">Intermitencia</h3>
+                    <p class="speech-text text-sm text-slate-300 bg-slate-900/60 p-3.5 rounded-xl border border-slate-700/50 whitespace-pre-line leading-relaxed">Te informamos que al realizar la verificación técnica de tu línea, podemos observar que los niveles de potencia de la fibra óptica se encuentran fuera de los parámetros óptimos.
+Esta variación en la potencia óptica es la causa directa de la intermitencia y caídas constantes en tu equipo. Por este motivo, hemos registrado y enviado tu caso a el departamento encargado. ¡Te mantendremos informado/a!</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-700/60 text-[11px] text-slate-400 flex items-center justify-between">
+                    <span>Aviso de potencia</span>
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+            </div>
+
+            <!-- 10. Otras Intermitencias -->
+            <div class="speech-card bg-slate-800 border border-slate-700 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-600 transition shadow-lg">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-amber-500/10 text-amber-400 rounded-full border border-amber-500/20">Otras Intermitencias / Chat</span>
+                        <span class="text-xs text-slate-400">Preguntas individuales</span>
+                    </div>
+                    <h3 class="font-bold text-base mb-3 text-white">Otras Intermitencias</h3>
+                    <div class="space-y-3">
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50 flex items-start justify-between gap-2">
+                            <p class="speech-text text-sm text-slate-300 leading-snug">¿El inconveniente ocurre en todos tus dispositivos o solo en alguno en específico?</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-2.5 py-1 rounded-lg transition shrink-0">
+                                <i class="fa-regular fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50 flex items-start justify-between gap-2">
+                            <p class="speech-text text-sm text-slate-300 leading-snug">¿Te encuentras cerca del router cuando sucede la caída o estás en otra habitación?</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-2.5 py-1 rounded-lg transition shrink-0">
+                                <i class="fa-regular fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50 flex items-start justify-between gap-2">
+                            <p class="speech-text text-sm text-slate-300 leading-snug">¿Te encuentras conectado a la red 2.4 GHz o a la 5 GHz?</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-2.5 py-1 rounded-lg transition shrink-0">
+                                <i class="fa-regular fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-700/60 text-[11px] text-slate-400 flex items-center justify-between">
+                    <span>Preguntas de sondeo</span>
+                    <i class="fa-solid fa-wifi"></i>
+                </div>
+            </div>
+
+            <!-- 11. Formato de tickets: LOS & CRITICAL -->
+            <div class="speech-card bg-slate-800 border border-slate-700 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-600 transition shadow-lg">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/20">Tickets</span>
+                        <span class="text-xs text-slate-400">Plantillas de reporte</span>
+                    </div>
+                    <h3 class="font-bold text-base mb-3 text-white">Formato de tickets: LOS y CRITICAL</h3>
+                    <div class="space-y-3">
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50">
+                            <p class="speech-text text-sm text-slate-300 leading-relaxed mb-2.5">El cliente presenta luz LOS activa (Rojo). La última potencia óptica reflejada en el sistema fue de [Insertar dBm]. INDICAR LA MAYOR CANTIDAD DE DETALLES QUE DISPONGAN.</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-3 py-1.5 rounded-lg transition w-full flex items-center justify-center gap-1.5 font-medium">
+                                <i class="fa-regular fa-copy"></i> Copiar Ticket LOS
+                            </button>
+                        </div>
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50">
+                            <p class="speech-text text-sm text-slate-300 leading-relaxed mb-2.5">Cliente en estado de CRITICAL, el mismo presenta potencias de [Insertar dBm], por tal motivo el mismo presenta intermitencias en el servicio</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-3 py-1.5 rounded-lg transition w-full flex items-center justify-center gap-1.5 font-medium">
+                                <i class="fa-regular fa-copy"></i> Copiar Ticket CRITICAL
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-700/60 text-[11px] text-slate-400 flex items-center justify-between">
+                    <span>SmartOLT / Sistema</span>
+                    <i class="fa-solid fa-ticket"></i>
+                </div>
+            </div>
+
+            <!-- 12. Formato de tickets: PATCHCORD ROTO & ONU INHIBIDA -->
+            <div class="speech-card bg-slate-800 border border-slate-700 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-600 transition shadow-lg">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/20">Tickets</span>
+                        <span class="text-xs text-slate-400">Plantillas de reporte</span>
+                    </div>
+                    <h3 class="font-bold text-base mb-3 text-white">Formato de tickets: Patchcord e Inhibida</h3>
+                    <div class="space-y-3">
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50">
+                            <p class="speech-text text-sm text-slate-300 leading-relaxed mb-2.5">El cliente presenta cable Patchcord averiado. Requiere reemplazo de jumper de fibra óptica en domicilio para restablecer el enlace.</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-3 py-1.5 rounded-lg transition w-full flex items-center justify-center gap-1.5 font-medium">
+                                <i class="fa-regular fa-copy"></i> Copiar Patchcord Roto
+                            </button>
+                        </div>
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50">
+                            <p class="speech-text text-sm text-slate-300 leading-relaxed mb-2.5">El cliente presenta ONU inhibida. El equipo se encuentra colgado/bloqueado a nivel lógico y no procesa el enlace, validar si requiere cambio.</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-3 py-1.5 rounded-lg transition w-full flex items-center justify-center gap-1.5 font-medium">
+                                <i class="fa-regular fa-copy"></i> Copiar ONU Inhibida
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-700/60 text-[11px] text-slate-400 flex items-center justify-between">
+                    <span>SmartOLT / Sistema</span>
+                    <i class="fa-solid fa-plug"></i>
+                </div>
+            </div>
+
+            <!-- 13. Formato de tickets: REUBICACIÓN & MUDANZA -->
+            <div class="speech-card bg-slate-800 border border-slate-700 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-600 transition shadow-lg">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/20">Tickets</span>
+                        <span class="text-xs text-slate-400">Plantillas de reporte</span>
+                    </div>
+                    <h3 class="font-bold text-base mb-3 text-white">Formato de tickets: Reubicación y Mudanza</h3>
+                    <div class="space-y-3">
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50">
+                            <p class="speech-text text-sm text-slate-300 leading-relaxed mb-2.5">Cliente solicita reubicación de ONU/Router dentro del mismo domicilio. Se confirmó conformidad del costo.</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-3 py-1.5 rounded-lg transition w-full flex items-center justify-center gap-1.5 font-medium">
+                                <i class="fa-regular fa-copy"></i> Copiar Reubicación
+                            </button>
+                        </div>
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50">
+                            <p class="speech-text text-sm text-slate-300 leading-relaxed mb-2.5">Cliente solicita mudanza/cambio de residencia. Conformidad de costo aprobada.
+Nueva Dirección: [Escribir nueva ubicación y punto de referencia].</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-3 py-1.5 rounded-lg transition w-full flex items-center justify-center gap-1.5 font-medium">
+                                <i class="fa-regular fa-copy"></i> Copiar Mudanza
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-700/60 text-[11px] text-slate-400 flex items-center justify-between">
+                    <span>SmartOLT / Sistema</span>
+                    <i class="fa-solid fa-truck-moving"></i>
+                </div>
+            </div>
+
+            <!-- 14. Formato de tickets: LENTITUD, CONF. EQP. PERSONAL & CAMBIO DE ONU -->
+            <div class="speech-card bg-slate-800 border border-slate-700 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-600 transition shadow-lg">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/20">Tickets</span>
+                        <span class="text-xs text-slate-400">Plantillas de reporte</span>
+                    </div>
+                    <h3 class="font-bold text-base mb-3 text-white">Formato de tickets: Visitas y Equipos</h3>
+                    <div class="space-y-3">
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50">
+                            <p class="speech-text text-sm text-slate-300 leading-relaxed mb-2.5">Cliente presenta Internet lento persistiendo la falla tras completar el protocolo de soporte remoto no se logró solventar, por lo tanto, el cliente requiere VISITA TÉCNICA.</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-3 py-1.5 rounded-lg transition w-full flex items-center justify-center gap-1.5 font-medium">
+                                <i class="fa-regular fa-copy"></i> Copiar Lentitud Visita
+                            </button>
+                        </div>
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50">
+                            <p class="speech-text text-sm text-slate-300 leading-relaxed mb-2.5">Cliente solicita configuración de router personal en su domicilio, conformidad de costo aprobada. VISITA TECNICA</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-3 py-1.5 rounded-lg transition w-full flex items-center justify-center gap-1.5 font-medium">
+                                <i class="fa-regular fa-copy"></i> Copiar Conf. Equipo
+                            </button>
+                        </div>
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50">
+                            <p class="speech-text text-sm text-slate-300 leading-relaxed mb-2.5">Cliente requiere cambio de equipo ONU. conformidad de costo aprobada.
+Cuenta con un equipo: 
+Se colocará: </p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-3 py-1.5 rounded-lg transition w-full flex items-center justify-center gap-1.5 font-medium">
+                                <i class="fa-regular fa-copy"></i> Copiar Cambio ONU
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-700/60 text-[11px] text-slate-400 flex items-center justify-between">
+                    <span>SmartOLT / Sistema</span>
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                </div>
+            </div>
+
+            <!-- 15. Corrección de instalación -->
+            <div class="speech-card bg-slate-800 border border-slate-700 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-600 transition shadow-lg">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/20">Tickets</span>
+                        <span class="text-xs text-slate-400">Plantillas de reporte</span>
+                    </div>
+                    <h3 class="font-bold text-base mb-3 text-white">Corrección de instalación</h3>
+                    <div class="space-y-3">
+                        <div class="speech-item bg-slate-900/60 p-3 rounded-xl border border-slate-700/50">
+                            <p class="speech-text text-sm text-slate-300 leading-relaxed mb-2.5">Se identificó mal posicionamiento del equipo/cableado que afecta el enlace</p>
+                            <button onclick="copyText(this)" class="copy-btn text-xs bg-slate-700 hover:bg-blue-600 text-slate-200 hover:text-white px-3 py-1.5 rounded-lg transition w-full flex items-center justify-center gap-1.5 font-medium">
+                                <i class="fa-regular fa-copy"></i> Copiar Corrección Inst.
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-700/60 text-[11px] text-slate-400 flex items-center justify-between">
+                    <span>SmartOLT / Sistema</span>
+                    <i class="fa-solid fa-house-chimney-crack"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Empty Search State -->
+        <div id="noResults" class="hidden text-center py-16">
+            <div class="inline-block bg-slate-800 p-4 rounded-full text-slate-500 mb-3 text-2xl">
+                <i class="fa-solid fa-ghost"></i>
+            </div>
+            <p class="text-slate-400 text-lg font-medium">No se encontraron speeches con ese término.</p>
+            <p class="text-xs text-slate-500 mt-1">Intenta con otra palabra clave (ej. LOS, lentitud, router).</p>
+        </div>
+    </main>
+
+    <!-- Script de Búsqueda y Copiado Robusto -->
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const cards = document.querySelectorAll('.speech-card');
+        const noResults = document.getElementById('noResults');
+        const toast = document.getElementById('toast');
+
+        // Búsqueda instantánea general
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase().trim();
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                if (text.includes(term)) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            if (visibleCount === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        });
+
+        // Función de copiado con doble mecanismo (Clipboard API + Fallback universal)
+        function copyText(button) {
+            const itemContainer = button.closest('.speech-item') || button.closest('.speech-card');
+            const speechTextEl = itemContainer.querySelector('.speech-text');
+            const textToCopy = speechTextEl ? speechTextEl.innerText : '';
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    triggerSuccess(button);
+                }).catch(() => {
+                    fallbackCopy(textToCopy, button);
+                });
+            } else {
+                fallbackCopy(textToCopy, button);
+            }
+        }
+
+        function fallbackCopy(text, button) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.opacity = "0";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    triggerSuccess(button);
+                } else {
+                    alert('No se pudo copiar el texto');
+                }
+            } catch (err) {
+                console.error('Error al copiar', err);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function triggerSuccess(button) {
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<i class="fa-solid fa-check text-emerald-400"></i> ¡Copiado!';
+            button.classList.add('bg-emerald-600/20', 'border', 'border-emerald-500/50', 'text-emerald-300');
+
+            setTimeout(() => {
+                button.innerHTML = originalHTML;
+                button.classList.remove('bg-emerald-600/20', 'border', 'border-emerald-500/50', 'text-emerald-300');
+            }, 1500);
+
+            showToast();
+        }
+
+        function showToast() {
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
